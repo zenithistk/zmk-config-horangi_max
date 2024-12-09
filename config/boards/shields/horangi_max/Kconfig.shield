@@ -1,0 +1,5 @@
+config SHIELD_HORANGI_MAX_LEFT
+    def_bool $(shields_list_contains,horangi_max_left)
+
+config SHIELD_HORANGI_MAX_RIGHT
+    def_bool $(shields_list_contains,horangi_max_right)

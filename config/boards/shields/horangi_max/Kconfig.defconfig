@@ -1,0 +1,16 @@
+if SHIELD_HORANGI_MAX_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "horangi_max"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_HORANGI_MAX_LEFT || SHIELD_HORANGI_MAX_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

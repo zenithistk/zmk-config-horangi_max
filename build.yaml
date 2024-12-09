@@ -1,0 +1,8 @@
+---
+include:
+  - board: nice_nano_v2
+    shield: horangi_max_left rgbled_adapter
+  - board: nice_nano_v2
+    shield: horangi_max_right rgbled_adapter
+  - board: nice_nano_v2
+    shield: settings_reset

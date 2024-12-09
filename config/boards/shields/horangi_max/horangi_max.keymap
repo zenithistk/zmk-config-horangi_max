@@ -1,0 +1,130 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
+
+/ {
+    macros {
+        bt_0: bt_profile_macro_0 {
+            label = "BT_0";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>
+                , <&bt BT_SEL 0>;
+        };
+
+        bt_1: bt_profile_macro_1 {
+            label = "BT_1";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>
+                , <&bt BT_SEL 1>;
+        };
+        
+        bt_2: bt_profile_macro_2 {
+            label = "BT_2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>
+                , <&bt BT_SEL 2>;
+        };
+
+        select_usb: usb_profile_macro {
+            label = "SELECT_USB";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_USB>
+                , <&macro_wait_time 1000>
+                , <&bt BT_DISC 0>
+                , <&macro_wait_time 1000>
+                , <&bt BT_DISC 1>
+                , <&macro_wait_time 1000>
+                , <&bt BT_DISC 2>;
+        };
+
+        bt_0_clr: bt_profile_macro_0_clr {
+            label = "BT_0_CLR";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>
+                , <&bt BT_SEL 0>
+                , <&macro_wait_time 1000>
+                , <&bt BT_CLR>;
+        };
+
+        bt_1_clr: bt_profile_macro_1_clr {
+            label = "BT_1_CLR";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>
+                , <&bt BT_SEL 1>
+                , <&macro_wait_time 1000>
+                , <&bt BT_CLR>;
+        };
+
+        bt_2_clr: bt_profile_macro_2_clr {
+            label = "BT_2_CLR";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>
+                , <&bt BT_SEL 2>
+                , <&macro_wait_time 1000>
+                , <&bt BT_CLR>;
+        };
+    };
+
+    behaviors {
+        bt0: bluetooth_0 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping_term_ms = <1000>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&bt_0_clr>, <&bt_0>;
+        };
+    };
+
+    behaviors {
+        gresc: grave_escape {
+            compatible = "zmk,behavior-mod-morph";
+            label = "GRAVE_ESCAPE";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT|MOD_RALT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+            >;
+        };
+
+        lower_layer {
+            bindings = <
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7  &kp N8  &kp N9  &kp N0 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
+            >;
+        };
+       
+    };
+};

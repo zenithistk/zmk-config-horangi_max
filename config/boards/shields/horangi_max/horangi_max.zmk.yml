@@ -1,0 +1,11 @@
+file_format: "1"
+id: horangi_max
+name: horangi_max
+type: shield
+url: https://github.com/zenithistk/horangi
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - horangi_max_left
+  - horangi_max_right
