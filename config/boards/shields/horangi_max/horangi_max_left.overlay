@@ -1,12 +1,6 @@
 #include "horangi_max.dtsi"
 
-&kscan0: kscan {
-    compatible = "zmk,kscan-gpio-matrix";
-    label = "KSCAN";
-
-    diode-direction = "col2row";
-    debounce-press-ms = <4>;
-    debounce-release-ms = <20>;
+&kscan0 {
     row-gpios
         = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
         , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
